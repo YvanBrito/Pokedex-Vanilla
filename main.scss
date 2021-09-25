@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,700;1,400&display=swap');
+
+//------------Variables------------------
+$background: #FFABAB;
+$font: 'Open Sans', sans-serif;
+$card-font-title-size: 25px;
+$card-font-size: 18px;
+//---------------------------------------
+//------------Reset----------------------
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+//-------------------------------------
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $background;
+  font-family: $font;
+  width: 70vw;
+  margin: 2rem auto;
+}
+.cardsPanel {
+  display: flex;
+  flex-wrap: wrap;
+}
+.searchInput {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 20px;
+  width: 20vw;
+  height: 2rem;
+  margin: 0px auto;
+
+  input {
+    width: 100%;
+    margin-left: 15px;
+    border: none;
+    outline: none;
+  }
+
+  button {
+    background: transparent;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    height: 100%;
+    width: 35px;
+    transition: all .3s;
+    cursor: pointer;
+
+    &:active {
+      background-color: rgb(212, 212, 212);
+    }
+  }
+}
+//------------Cards-------------
+.card {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 35px 35px 35px;
+  margin: 1rem;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 20px;
+  border: 1px solid #9A9A9A;
+  cursor: pointer;
+  transition: all .3s;
+
+  &:hover {
+    background-color: rgb(231, 231, 231);
+  }
+  
+  &:active {
+    background-color: rgb(190, 190, 190);
+  }
+
+  .pokenumber, .types {
+    font-weight: 400;
+    font-style: italic;
+    font-size: $card-font-size;
+  }
+
+  .pokemonName {
+    font-weight: bold;
+    font-size: $card-font-title-size;
+    margin-bottom: 5px;
+  }
+
+  .types {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    span {
+      padding: 5px 15px;
+      border-radius: 20px;
+      margin: 0px 2px;
+    }
+      
+    .grass {
+      background-color: #A0CC8B;
+    }
+    
+    .poison {
+      background-color: #b97fc9;
+      color: white;
+    } 
+    
+    .fire {
+      background-color: #fd7d24;
+      color: white;
+    } 
+    
+    .flying {
+      background-color: #ffd7bc;
+    }
+    
+    .water {
+      background-color: #4693c5;
+      color: white;
+    }
+    
+    .bug {
+      background-color: #729f3f;
+      color: white;
+    }
+    
+    .normal {
+      background-color: #a4acaf;
+      color: white;
+    }
+    
+    .fairy {
+      background-color: #fdb9e9;
+    }
+    
+    .ground {
+      background-color: #f7de3f;
+    }
+    
+    .fighting {
+      background-color: #d56723;
+      color: white;
+    }
+    
+    .rock {
+      background-color: #a38c21;
+      color: white;
+    }
+    
+    .psychic {
+      background-color: #f467ba;
+      color: white;
+    }
+    
+    .electric {
+      background-color: #eed535;
+    }
+    
+    .ice {
+      background-color: #51c4e7;
+    }
+    
+    .dragon {
+      background-color: #c75440;
+      color: white;
+    }
+    
+    .steel {
+      background-color: #9eb7b8;
+      color: white;
+    }
+    
+    .ghost {
+      background-color: #7b62a3;
+      color: white;
+    }
+  }
+}
+//--------------------------------------
+//-----------CanvasInfo-----------------
+.canvasInfo{
+  position: fixed;
+  width: 80vw;
+  height: 90vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 10px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  transition: opacity .5s linear;
+  
+  &.hide {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+//--------------------------------------
+.loading {
+  margin-top: 50px;
+  width: 30px;
+  height: 30px;
+  color: red;
+  border: 5px solid #ccc;
+  border-top: 5px solid #333;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
