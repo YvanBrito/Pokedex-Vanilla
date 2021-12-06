@@ -1,3 +1,5 @@
+import "./style.scss";
+
 class HttpService {
   constructor(baseUrl) {
     this.baseUrl = baseUrl;
@@ -94,7 +96,7 @@ class PokedexView {
     document.getElementById('searchBtn').addEventListener('click', async () => {
         await this.searchInputEvent()
     });
-    this.searchInput.addEventListener('keyup', async () => {
+    this.searchInput.addEventListener('keyup', async (event) => {
       if (event.isComposing || event.keyCode === 13) {
         await this.searchInputEvent()
       }
@@ -109,8 +111,11 @@ class PokedexView {
   }
   
   async searchInputEvent() {
+    this.loading = true;
     let response = await this.loadSearchCard(this.searchInput.value);
-    this.panel.innerHTML = response;
+    this.loading = false;
+    this.panel.innerHTML = '';
+    this.panel.appendChild(response);
   }
   
   async loadSearchCard(pokemonName) {
@@ -118,7 +123,10 @@ class PokedexView {
       let response = await this.pokedexController.getPokemonInfo(pokemonName.toLowerCase())
       return this.createCard(response)
     } catch (error) {
-      return '<h1>Pokemon not found</h1>'
+      const notFound = document.createElement('h1');
+      notFound.setAttribute('class', 'notFound');
+      notFound.innerText = 'Pokemon not found';
+      return notFound;
     }
   }
   
